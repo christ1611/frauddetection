@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm *)",
+      "PowerShell(cd \"C:\\\\Users\\\\chris\\\\OneDrive\\\\画像\\\\fraudsys\\\\fraudsys\\\\backend\"; Start-Process node -ArgumentList \"server.js\" -PassThru | ForEach-Object { $pid = $_.Id; Start-Sleep -Seconds 2; $r = Invoke-RestMethod -Uri \"http://localhost:3001/api/reports\" -Method GET; Stop-Process -Id $pid -Force; $r | ConvertTo-Json })",
+      "PowerShell(cd \"C:\\\\Users\\\\chris\\\\OneDrive\\\\画像\\\\fraudsys\\\\fraudsys\\\\backend\"; $proc = Start-Process node -ArgumentList \"server.js\" -PassThru; Start-Sleep -Seconds 2; try { $r = Invoke-RestMethod -Uri \"http://localhost:3001/api/reports\" -Method GET; Write-Host \"Backend OK: $\\($r | ConvertTo-Json\\)\" } catch { Write-Host \"Error: $_\" } finally { Stop-Process -Id $proc.Id -Force })",
+      "PowerShell(cd \"C:\\\\Users\\\\chris\\\\OneDrive\\\\画像\\\\fraudsys\\\\fraudsys\\\\backend\"; Start-Process node -ArgumentList \"server.js\"; Start-Sleep -Seconds 2; $r = Invoke-WebRequest -Uri \"http://localhost:3001/scenario\" -UseBasicParsing; Write-Host \"Scenario page status: $\\($r.StatusCode\\)\")",
+      "PowerShell(Get-Process *)",
+      "PowerShell(cd \"C:\\\\Users\\\\chris\\\\OneDrive\\\\画像\\\\fraudsys\\\\fraudsys\\\\backend\"; Start-Process node -ArgumentList \"server.js\"; Start-Sleep -Seconds 2; $r = Invoke-WebRequest -Uri \"http://localhost:3001/scenario\" -UseBasicParsing; Write-Host \"Status: $\\($r.StatusCode\\) | Size: $\\($r.Content.Length\\) bytes\")",
+      "PowerShell(Start-Sleep -Seconds 4; Start-Process \"http://localhost:5173\"; Write-Host \"Opened app\")",
+      "PowerShell(Start-Sleep -Seconds 4; Invoke-WebRequest -Uri \"http://localhost:5173\" -UseBasicParsing -TimeoutSec 5 | Select-Object StatusCode)",
+      "PowerShell(Start-Process \"http://localhost:5173\")",
+      "PowerShell(Start-Sleep -Seconds 5; Invoke-WebRequest -Uri \"http://localhost:5173\" -UseBasicParsing -TimeoutSec 3 | Select-Object StatusCode)",
+      "PowerShell(Start-Sleep -Seconds 5; Invoke-WebRequest -Uri \"http://localhost:5173\" -UseBasicParsing -TimeoutSec 5 | Select-Object StatusCode)",
+      "PowerShell(Start-Process \"http://localhost:5173\"; Start-Sleep -Milliseconds 500; Start-Process \"http://localhost:3001/scenario\")",
+      "PowerShell(cd \"C:\\\\Users\\\\chris\\\\OneDrive\\\\画像\\\\fraudsys\\\\fraudsys\\\\frontend\"; Start-Process cmd -ArgumentList \"/c\",\"node_modules\\\\.bin\\\\vite.cmd\" -WindowStyle Normal; Start-Sleep -Seconds 5; $r = Invoke-WebRequest \"http://localhost:5173\" -UseBasicParsing -TimeoutSec 5; Write-Host \"Frontend: $\\($r.StatusCode\\)\")",
+      "PowerShell(Start-Process \"http://localhost:5173\"; Start-Sleep -Milliseconds 300; Start-Process \"http://localhost:5173/admin\"; Start-Sleep -Milliseconds 300; Start-Process \"http://localhost:3001/scenario\")",
+      "PowerShell(cd \"C:\\\\Users\\\\chris\\\\OneDrive\\\\画像\\\\fraudsys\\\\fraudsys\\\\frontend\"; Start-Process cmd -ArgumentList \"/c\",\"node_modules\\\\.bin\\\\vite.cmd\" -WindowStyle Normal; Start-Sleep -Seconds 5; $r = Invoke-WebRequest \"http://localhost:5173\" -UseBasicParsing -TimeoutSec 5; Write-Host \"Frontend: $\\($r.StatusCode\\)\"; Start-Process \"http://localhost:5173\")",
+      "PowerShell(Start-Sleep -Seconds 3; $r = Invoke-WebRequest \"http://localhost:3001/api/check-url?url=http://kakaobank.verify.net\" -UseBasicParsing -TimeoutSec 5; Write-Host \"check-url: $\\($r.Content\\)\")"
+    ]
+  }
+}
